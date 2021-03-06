@@ -1,0 +1,139 @@
+{
+        "openapi": "3.0.0",
+        "info": {
+        "title": "API IMDB",
+            "version": "1.0.0"
+        },
+        "servers": [{
+            "url": "http://localhost/api/v1",
+            "description": "Desarrollo"
+            }],
+        "paths": {
+            "/login": {
+                "post": {
+                     "tags": ["Auth"],
+                     "requestBody":{
+                         "content": {
+                             "application/json": {
+                                 "schema": {
+                                    "$ref": "#/components/schemas/Login"
+                                }
+                            }
+                        }
+                     },
+                     "responses": {                    
+                        "200": {
+                            "description": "se ha iniciado sesion correctmente"
+                        }
+                    }
+                }
+            },
+            "/signup":{
+                "post": {
+                    "tags": ["Auth"],
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                     },
+                     "responses": {                    
+                        "200": {
+                            "description": "se ha iniciado sesion correctmente"
+                        }
+                    }
+                }
+            },
+            "/reset-password": {
+            "post": {
+                "description": "Endpoint para crear un token de restablecimiento de contraseña",
+                "tags": ["Auth"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                 },
+                "responses": {
+                    "200": {
+                        "description": "Se ha enviado un correo electronico con el token de restablecimiento"
+                    }
+                }
+            }
+    },
+    "/update-password": {
+        "post": {
+            "description": "Endpoint para la constraseña de un usuario",
+            "tags": ["Auth"],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "token": {
+                                    "type": "string"
+                                },
+                                "userId": {
+                                    "type": "integer"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+             },
+            "responses": {
+                "200": {
+                    "description": "Se ha enviado un correo electronico con el token de restablecimiento"
+                }
+            }
+        }
+    }
+},
+    "components": {
+        "schemas": {
+            "Login": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -20,7 +20,7 @@ const smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
         type: "OAuth2",
-        user: "carloslancheros47@gmail.com",
+        user: "u2204240@unimilitar.edu.co",
         clientId: googleClientId,
         clientSecret: googleSecret,
         refreshToken: googleRefreshToken,
@@ -34,7 +34,7 @@ const smtpTransport = nodemailer.createTransport({
 const sendEmail = (to, token, userId) => {
 
     const mailOptions = {
-        from: "Academlo <carloslancheros47@gmail.com>",
+        from: "Academlo <u2204240@unimilitar.edu.co>",
         to: "lancheros.carlos@hotmail.com",
         subject: "Restablecimiento de contraseña Academlo",
         generateTextFromHTML: true,
